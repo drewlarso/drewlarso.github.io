@@ -3,12 +3,10 @@ import {
     Matrix4,
     Mesh,
     MeshBasicMaterial,
-    MeshNormalMaterial,
     PerspectiveCamera,
     Scene,
     SphereGeometry,
     TextureLoader,
-    TorusGeometry,
     WebGLRenderer,
 } from 'three'
 import { onMounted, render } from 'vue'
