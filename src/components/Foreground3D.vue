@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import {
-    AmbientLight,
-    DirectionalLight,
     Mesh,
-    MeshBasicMaterial,
     MeshNormalMaterial,
-    MeshPhongMaterial,
     PerspectiveCamera,
     Scene,
     SphereGeometry,
