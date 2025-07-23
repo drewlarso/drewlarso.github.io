@@ -1,12 +1,88 @@
+import Hero from './Hero'
+import Navbar from './Navbar'
 import PhaserBackground from './PhaserBackground'
 
 function App() {
     return (
         <>
             <PhaserBackground />
-            <section className="flex items-center justify-center h-[60vh] w-full">
-                <h1 className="text-7xl text-white text-center">HELLO</h1>
-            </section>
+            <Navbar />
+            <Hero />
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p id="about">about</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
+            <p>CONTENT</p>
         </>
     )
 }
