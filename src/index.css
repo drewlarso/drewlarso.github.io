@@ -6,33 +6,41 @@
     --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
     --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
     --animate-bob-1: smoothSineBob1 3s linear infinite;
-    --animate-bob-2: smoothSineBob2 2.3s linear infinite;
+    --animate-bob-2: smoothSineBob2 2.5s linear infinite;
+    --animate-tilt-left: tilt-left 2s ease-in-out infinite;
+    --animate-tilt-right: tilt-right 2s ease-in-out infinite;
+}
+
+@keyframes tilt-left {
+    0% {
+        transform: rotate(-1deg);
+    }
+    50% {
+        transform: rotate(1deg);
+    }
+    100% {
+        transform: rotate(-1deg);
+    }
+}
+
+@keyframes tilt-right {
+    0% {
+        transform: rotate(1deg);
+    }
+    50% {
+        transform: rotate(-1deg);
+    }
+    100% {
+        transform: rotate(1deg);
+    }
 }
 
 @keyframes smoothSineBob1 {
     0% {
         transform: translateY(0px);
     }
-    12.5% {
-        transform: translateY(-3.5px);
-    }
-    25% {
-        transform: translateY(-5px);
-    }
-    37.5% {
-        transform: translateY(-3.5px);
-    }
     50% {
-        transform: translateY(0px);
-    }
-    62.5% {
-        transform: translateY(3.5px);
-    }
-    75% {
-        transform: translateY(5px);
-    }
-    87.5% {
-        transform: translateY(3.5px);
+        transform: translateY(-7px);
     }
     100% {
         transform: translateY(0px);
@@ -43,26 +51,8 @@
     0% {
         transform: translateY(0px);
     }
-    12.5% {
-        transform: translateY(2px);
-    }
-    25% {
-        transform: translateY(3px);
-    }
-    37.5% {
-        transform: translateY(2px);
-    }
     50% {
-        transform: translateY(0px);
-    }
-    62.5% {
-        transform: translateY(-2px);
-    }
-    75% {
-        transform: translateY(-3px);
-    }
-    87.5% {
-        transform: translateY(-2px);
+        transform: translateY(5px);
     }
     100% {
         transform: translateY(0px);
