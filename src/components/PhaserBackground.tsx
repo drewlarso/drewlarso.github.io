@@ -45,6 +45,12 @@ export default function PhaserBackground() {
     )
 }
 
+interface Skill {
+    name: string
+    size: number
+    imageKey: string
+}
+
 class SpaceScene extends Phaser.Scene {
     private bgStars!: Phaser.GameObjects.Particles.ParticleEmitter
     private mgStars!: Phaser.GameObjects.Particles.ParticleEmitter
@@ -55,6 +61,19 @@ class SpaceScene extends Phaser.Scene {
     private scrollY: number = 0
     private attractorY: number = 0
     private attractor!: Phaser.Physics.Matter.Image
+    private skillsReleased: boolean = false
+    private skillBalls: Phaser.Types.Physics.Matter.MatterBody[] = []
+
+    private skills: Skill[] = [
+        { name: 'Godot', size: 2, imageKey: 'godot' },
+        { name: 'Phaser', size: 2, imageKey: 'phaser' },
+        { name: 'TypeScript', size: 2, imageKey: 'ts' },
+        { name: 'Python', size: 2, imageKey: 'python' },
+        { name: 'Git', size: 2, imageKey: 'git' },
+        { name: 'Lua', size: 2, imageKey: 'lua' },
+        { name: 'React', size: 1, imageKey: 'react' },
+        { name: 'Tailwind', size: 2, imageKey: 'tailwind' },
+    ]
 
     constructor() {
         super('space-scene')
@@ -62,9 +81,18 @@ class SpaceScene extends Phaser.Scene {
 
     preload() {
         this.load.image('bg', 'bg.png')
-        this.load.image('light', 'light_01.png')
+        this.load.image('light', 'smoke_07.png')
         this.load.image('star', 'star_04.png')
         this.load.image('comet', 'comet.png')
+
+        this.load.image('godot', 'godot.svg')
+        this.load.image('phaser', 'phaser.png')
+        this.load.image('ts', 'typescript.svg')
+        this.load.image('python', 'github.svg')
+        this.load.image('git', 'github.svg')
+        this.load.image('lua', 'github.svg')
+        this.load.image('react', 'react.svg')
+        this.load.image('tailwind', 'tailwind.svg')
     }
 
     create() {
@@ -76,66 +104,67 @@ class SpaceScene extends Phaser.Scene {
         this.createStars()
         this.input.enabled = false
 
-        // this.attractorY = this.scale.height / 2
-        // const cometCount = 10
-        // for (let i = 0; i < cometCount; i++) {
-        //     const side = Phaser.Math.Between(0, 3)
-        //     let x = 0
-        //     let y = 0
-        //     if (side === 0) {
-        //         // left
-        //         x = Phaser.Math.Between(-1000, -100)
-        //         y = Phaser.Math.Between(0, this.scale.height)
-        //     } else if (side === 1) {
-        //         // top
-        //         x = Phaser.Math.Between(0, this.scale.width)
-        //         y = Phaser.Math.Between(-1000, -100)
-        //     } else if (side === 2) {
-        //         // right
-        //         x = this.scale.width + Phaser.Math.Between(1000, 100)
-        //         y = Phaser.Math.Between(0, this.scale.height)
-        //     } else if (side === 3) {
-        //         // bottom
-        //         x = Phaser.Math.Between(0, this.scale.width)
-        //         y = this.scale.height + Phaser.Math.Between(1000, 100)
-        //     }
+        this.attractorY = this.scale.height / 2 + 680
 
-        //     this.matter.add
-        //         .image(x, y, 'comet', 0, {
-        //             mass: Phaser.Math.Between(10, 25),
-        //         })
-        //         .setScale(Phaser.Math.FloatBetween(0.2, 0.3))
-        //         .setDepth(10)
-        // }
+        for (const skill of this.skills) {
+            const x =
+                Phaser.Math.Between(0, 1) === 1
+                    ? Phaser.Math.Between(-1000, -100)
+                    : Phaser.Math.Between(
+                          this.scale.width + 1000,
+                          this.scale.width + 100
+                      )
+            const y = Phaser.Math.Between(
+                this.scale.height / 2,
+                this.scale.height / 2 + 680
+            )
 
-        // this.attractor = this.matter.add
-        //     .image(this.scale.width / 2, this.scale.height / 2, 'light', 0, {
-        //         shape: { type: 'circle', radius: 196 },
-        //         // @ts-expect-error attractors do exist
-        //         attractors: [
-        //             // @ts-expect-error types?
-        //             (bodyA, bodyB) => ({
-        //                 x: (bodyA.position.x - bodyB.position.x) * 0.000001,
-        //                 y: (bodyA.position.y - bodyB.position.y) * 0.000001,
-        //             }),
-        //         ],
-        //         isStatic: true,
-        //         isSensor: true,
-        //     })
-        //     .setScale(0.1)
+            const ball = this.matter.add
+                .image(x, y, skill.imageKey, 0, {
+                    mass: 0.05,
+                })
+                .setScale(0.75 * skill.size)
+                .setDepth(10)
+                .setStatic(true)
+                .setFrictionAir(0.09)
+            this.skillBalls.push(ball)
+        }
+
+        this.attractor = this.matter.add
+            .image(this.scale.width / 2, this.attractorY, 'light', 0, {
+                shape: { type: 'circle', radius: 196 },
+                // @ts-expect-error attractors do exist
+                attractors: [
+                    // @ts-expect-error types?
+                    (bodyA, bodyB) => ({
+                        x: (bodyA.position.x - bodyB.position.x) * 0.000001,
+                        y: (bodyA.position.y - bodyB.position.y) * 0.000001,
+                    }),
+                ],
+                isStatic: true,
+                isSensor: true,
+            })
+            .setScale(0.1)
     }
 
     update(): void {
-        // update(_time: number): void {
-        // this.attractor.setPosition(
-        //     this.scale.width / 2,
-        //     this.attractorY + Math.sin(time / 1000) * 50
-        // )
+        console.log(this.scrollY)
 
         const scrollDelta = window.scrollY - this.scrollY
         if (scrollDelta === 0) return
         this.scrollY = window.scrollY
         this.scrollX = window.scrollX
+        this.attractor.y = this.scale.height / 2 + 900 - this.scrollY
+
+        if (!this.skillsReleased) {
+            if (this.scrollY >= 680) {
+                this.skillsReleased = true
+                for (const ball of this.skillBalls) {
+                    // @ts-expect-error setStatic DOES exist
+                    ball.setStatic(false)
+                }
+            }
+        }
 
         const stars = [this.bgStars, this.mgStars, this.fgStars]
         stars.forEach((emitter) => {
@@ -161,7 +190,7 @@ class SpaceScene extends Phaser.Scene {
 
     private createSmoke() {
         const LIFESPAN = 5000
-        const MAXALIVEPARTICLES = 4
+        const MAXALIVEPARTICLES = 0
         const PURPLE = 0x380d4a
 
         this.smoke = this.add.particles(0, 0, 'light', {
@@ -202,6 +231,7 @@ class SpaceScene extends Phaser.Scene {
                 },
                 speed: { min: 0, max: 10 },
                 angle: { min: 0, max: 360 },
+                gravityY: -1,
                 rotate: { min: -180, max: 180 },
                 lifespan: LIFESPAN,
                 maxAliveParticles: MAXALIVEPARTICLES / 2,
@@ -233,6 +263,7 @@ class SpaceScene extends Phaser.Scene {
                 },
                 speed: { min: 0, max: 8 },
                 angle: { min: 0, max: 360 },
+                gravityY: -2,
                 rotate: { min: -180, max: 180 },
                 lifespan: LIFESPAN,
                 maxAliveParticles: MAXALIVEPARTICLES / 3,
@@ -264,6 +295,7 @@ class SpaceScene extends Phaser.Scene {
                 },
                 speed: { min: 0, max: 8 },
                 angle: { min: 0, max: 360 },
+                gravityY: -4,
                 rotate: { min: -180, max: 180 },
                 lifespan: LIFESPAN,
                 maxAliveParticles: MAXALIVEPARTICLES / 4,

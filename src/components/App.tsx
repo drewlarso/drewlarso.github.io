@@ -1,6 +1,7 @@
 import Hero from './Hero'
 import Navbar from './Navbar'
 import PhaserBackground from './PhaserBackground'
+import Skills from './Skills'
 
 function App() {
     return (
@@ -8,81 +9,7 @@ function App() {
             <PhaserBackground />
             <Navbar />
             <Hero />
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p id="about">about</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
-            <p>CONTENT</p>
+            <Skills />
         </>
     )
 }
