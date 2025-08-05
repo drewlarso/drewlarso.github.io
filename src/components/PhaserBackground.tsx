@@ -104,67 +104,65 @@ class SpaceScene extends Phaser.Scene {
         this.createStars()
         this.input.enabled = false
 
-        this.attractorY = this.scale.height / 2 + 680
+        // this.attractorY = this.scale.height / 2 + 680
 
-        for (const skill of this.skills) {
-            const x =
-                Phaser.Math.Between(0, 1) === 1
-                    ? Phaser.Math.Between(-1000, -100)
-                    : Phaser.Math.Between(
-                          this.scale.width + 1000,
-                          this.scale.width + 100
-                      )
-            const y = Phaser.Math.Between(
-                this.scale.height / 2,
-                this.scale.height / 2 + 680
-            )
+        // for (const skill of this.skills) {
+        //     const x =
+        //         Phaser.Math.Between(0, 1) === 1
+        //             ? Phaser.Math.Between(-1000, -100)
+        //             : Phaser.Math.Between(
+        //                   this.scale.width + 1000,
+        //                   this.scale.width + 100
+        //               )
+        //     const y = Phaser.Math.Between(
+        //         this.scale.height / 2,
+        //         this.scale.height / 2 + 680
+        //     )
 
-            const ball = this.matter.add
-                .image(x, y, skill.imageKey, 0, {
-                    mass: 0.05,
-                })
-                .setScale(0.75 * skill.size)
-                .setDepth(10)
-                .setStatic(true)
-                .setFrictionAir(0.09)
-            this.skillBalls.push(ball)
-        }
+        //     const ball = this.matter.add
+        //         .image(x, y, skill.imageKey, 0, {
+        //             mass: 0.05,
+        //         })
+        //         .setScale(0.75 * skill.size)
+        //         .setDepth(10)
+        //         .setStatic(true)
+        //         .setFrictionAir(0.09)
+        //     this.skillBalls.push(ball)
+        // }
 
-        this.attractor = this.matter.add
-            .image(this.scale.width / 2, this.attractorY, 'light', 0, {
-                shape: { type: 'circle', radius: 196 },
-                // @ts-expect-error attractors do exist
-                attractors: [
-                    // @ts-expect-error types?
-                    (bodyA, bodyB) => ({
-                        x: (bodyA.position.x - bodyB.position.x) * 0.000001,
-                        y: (bodyA.position.y - bodyB.position.y) * 0.000001,
-                    }),
-                ],
-                isStatic: true,
-                isSensor: true,
-            })
-            .setScale(0.1)
+        // this.attractor = this.matter.add
+        //     .image(this.scale.width / 2, this.attractorY, 'light', 0, {
+        //         shape: { type: 'circle', radius: 196 },
+        //         // @ts-expect-error attractors do exist
+        //         attractors: [
+        //             // @ts-expect-error types?
+        //             (bodyA, bodyB) => ({
+        //                 x: (bodyA.position.x - bodyB.position.x) * 0.000001,
+        //                 y: (bodyA.position.y - bodyB.position.y) * 0.000001,
+        //             }),
+        //         ],
+        //         isStatic: true,
+        //         isSensor: true,
+        //     })
+        //     .setScale(0.1)
     }
 
     update(): void {
-        console.log(this.scrollY)
-
         const scrollDelta = window.scrollY - this.scrollY
         if (scrollDelta === 0) return
         this.scrollY = window.scrollY
         this.scrollX = window.scrollX
-        this.attractor.y = this.scale.height / 2 + 900 - this.scrollY
+        // this.attractor.y = this.scale.height / 2 + 900 - this.scrollY
 
-        if (!this.skillsReleased) {
-            if (this.scrollY >= 680) {
-                this.skillsReleased = true
-                for (const ball of this.skillBalls) {
-                    // @ts-expect-error setStatic DOES exist
-                    ball.setStatic(false)
-                }
-            }
-        }
+        // if (!this.skillsReleased) {
+        //     if (this.scrollY >= 680) {
+        //         this.skillsReleased = true
+        //         for (const ball of this.skillBalls) {
+        //             // @ts-expect-error setStatic DOES exist
+        //             ball.setStatic(false)
+        //         }
+        //     }
+        // }
 
         const stars = [this.bgStars, this.mgStars, this.fgStars]
         stars.forEach((emitter) => {
