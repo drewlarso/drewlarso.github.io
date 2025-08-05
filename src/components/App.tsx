@@ -1,6 +1,9 @@
+import Contact from '../assets/Contact'
+import Footer from './Footer'
 import Hero from './Hero'
 import Navbar from './Navbar'
 import PhaserBackground from './PhaserBackground'
+import Projects from './Projects'
 import Skills from './Skills'
 
 function App() {
@@ -10,6 +13,9 @@ function App() {
             <Navbar />
             <Hero />
             <Skills />
+            <Projects />
+            <Contact />
+            <Footer />
         </>
     )
 }
